@@ -43,7 +43,7 @@ const About = () => {
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 text-muted text-sm">
                 <MapPin size={16} className="text-purple-500" />
-                Sivakasi, Tamil Nadu
+                Rajapalayam, Tamil Nadu
               </div>
               <div className="flex items-center gap-2 text-muted text-sm">
                 <Mail size={16} className="text-pink-500" />
