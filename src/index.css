@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-surface: var(--bg-color);
+  --color-on-surface: var(--text-color);
+  --color-heading: var(--heading-color);
+  --color-border-subtle: var(--card-border);
+  --color-card: var(--card-bg);
+  
+  --color-accent-primary: #a855f7;
+  --color-accent-secondary: #ec4899;
+}
+
+@layer base {
+  :root {
+    --bg-color: #0a0a0a;
+    --text-color: #9ca3af;
+    --heading-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(10, 10, 10, 0.8);
+    --muted-color: #6b7280;
+  }
+
+  :root.light {
+    --bg-color: #fafafa;
+    --text-color: #374151;
+    --heading-color: #000000;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.06);
+    --nav-bg: rgba(250, 250, 250, 0.8);
+    --muted-color: #9ca3af;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    @apply font-sans transition-all duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    @apply font-serif transition-all duration-300;
+  }
+}
+
+.text-main { color: var(--heading-color); }
+.text-body { color: var(--text-color); }
+.text-muted { color: var(--muted-color); }
+.bg-surface { background-color: var(--bg-color); }
+.border-main { border-color: var(--card-border); }
+
+.card-blur {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  @apply backdrop-blur-sm rounded-2xl transition-all duration-300;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.light .card-blur {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+.card-blur {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  @apply backdrop-blur-sm rounded-2xl transition-all duration-300;
+}
+
+.pill-button-outline {
+  border: 1px solid var(--card-border);
+  color: var(--heading-color);
+  @apply hover:bg-black/5 dark:hover:bg-white/5 active:scale-95;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)];
+}
+
+.pill-button {
+  @apply px-6 py-2.5 rounded-full font-medium transition-all duration-300;
+}
+
+.pill-button-primary {
+  @apply bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)] text-white hover:opacity-90 active:scale-95;
+}
+
+.pill-button-outline {
+  @apply border border-white/10 text-white hover:bg-white/5 active:scale-95;
+}
+
+.card-blur {
+  @apply bg-white/[0.03] border border-white/10 backdrop-blur-sm rounded-2xl;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  @apply mt-8 mb-4 font-serif transition-colors duration-300;
+  color: var(--heading-color);
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed transition-colors duration-300;
+  color: var(--text-color);
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-4 transition-colors duration-300;
+  color: var(--text-color);
+}
+
+.prose strong {
+  color: var(--heading-color);
+}
+
+.page-transition {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--card-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-color);
+}
