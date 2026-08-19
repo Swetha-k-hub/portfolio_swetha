@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Award, Briefcase, GraduationCap, Code2 } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import { portfolioData } from '../data/portfolio';
+import GetInTouchModal from '../components/GetInTouchModal';
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const stats = [
     { label: "CGPA", value: "8.52", icon: GraduationCap },
     { label: "Projects", value: "3+", icon: Code2 },
@@ -63,10 +67,21 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Link to="/projects" className="pill-button pill-button-primary flex items-center gap-2">
+          {/* ✨ CHANGED: Get Started button opens modal */}
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="pill-button pill-button-primary flex items-center gap-2"
+          >
+            Get Started <ArrowRight size={18} />
+          </button>
+          <Link to="/projects" className="pill-button pill-button-outline flex items-center gap-2">
             View Projects <ArrowRight size={18} />
           </Link>
-          <button className="pill-button pill-button-outline flex items-center gap-2">
+          {/* ✨ CHANGED: Download Resume also opens modal */}
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="pill-button pill-button-outline flex items-center gap-2"
+          >
             Download Resume <Download size={18} />
           </button>
         </motion.div>
@@ -136,6 +151,9 @@ const Home = () => {
           ))}
         </div>
       </section>
+
+      {/* ✨ Modal */}
+      <GetInTouchModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </PageWrapper>
   );
 };
